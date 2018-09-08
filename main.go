@@ -3,18 +3,20 @@ package main
 import (
 	"github.com/goSwap/scripts/python"
 	"log"
+	"fmt"
 )
 
 func main(){
-	libs, err := scripts.GetLibraries()
+	py := scripts.NewPython()
+	hasPip := py.ScanPip()
+	if hasPip != nil {
+		log.Print("Installing PIP...")
+		//py.InstallPip()
+	}
+	err := py.ParseLibraries()
 	if err != nil{
 		log.Fatal(err)
 	}
 
-	pyLibInstall := "pip install"
-	for _, lib := range libs{
-		pyLibInstall += " " + lib
-	}
-
-	print(pyLibInstall)
+	fmt.Printf("libs: %+v", py.Libraries)
 }
