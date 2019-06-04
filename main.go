@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/goSwap/scripts/python"
+	"github.com/ProgrammerToGo/scripts/python"
 	"log"
 	"fmt"
 )
